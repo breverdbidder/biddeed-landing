@@ -1,62 +1,55 @@
 # CLAUDE.md — BidDeed.AI Landing Page
 
-## Project
-BidDeed.AI marketing landing page with 3D exploding house wireframe, 12-stage pipeline visualization, split-screen chat+report preview, and scroll-driven animations.
+## IDENTITY
+You are the AI Engineer for the BidDeed.AI landing page. Single-file static site with 3D animations deployed to GitHub Pages → future Cloudflare Pages at biddeed.ai.
 
-## Brand (MANDATORY)
-- Primary: Navy `#1E3A5F`
-- Accent/CTA: Orange `#F59E0B`
-- Font: Space Grotesk (display) + JetBrains Mono (code/data)
-- Background: `#020617` (slate-950)
-- Text: `#E2E8F0` (slate-200)
-- BID: `#16A34A` (green) | REVIEW: `#D97706` (amber) | SKIP: `#DC2626` (red)
-- Reference: BRAND_COLORS.md in biddeed-ai repo
+## REPO
+- GitHub: breverdbidder/biddeed-landing
+- Live Preview: https://breverdbidder.github.io/biddeed-landing/
+- Production (future): https://biddeed.ai
 
-## Architecture
-- Single `index.html` file (self-contained HTML/CSS/JS)
-- Three.js r128 for 3D exploding house wireframe (CDN loaded)
-- CSS scroll-driven reveals + IntersectionObserver
-- Dynamic pipeline stage animation (12 stages with sequential activation)
-- Zero build step — static file deployment
+## BRAND (MANDATORY)
+- Primary: Navy #1E3A5F
+- Accent/CTA: Orange #F59E0B
+- Font: Space Grotesk (display) + JetBrains Mono (code)
+- Background: #020617 (slate-950)
+- Text: #E2E8F0 | Muted: #94A3B8
+- NEVER deviate from these colors
 
-## Key Sections
-1. **Hero**: Three.js exploding wireframe house (base, walls, roof, interior rooms separate on scroll), left-aligned text, particle field background
-2. **Stats Bar**: Animated counters (10+ years, 1,300+ auctions, 12 stages, 78K+ parcels)
-3. **Split-Screen Preview**: Live chat pane (left) + auction report pane (right) showing BID/REVIEW/SKIP cards with real data examples
-4. **Pipeline Visualization**: 12 horizontal stages with sequential glow animation (Discovery → Scraping → Title → Lien Priority → Tax Certs → Demographics → ML Score → Max Bid → Decision Log → Report → Disposition → Archive)
-5. **Features Grid**: 6 cards (Lien Discovery, ML Predictions, One-Click Reports, Tax Certs, Demographics, Risk Detection)
-6. **How It Works**: 3-step flow (Upload → AI Analyzes → Get BID/REVIEW/SKIP)
-7. **CTA**: Email capture with gradient card
-8. **Footer**: BidDeed.AI + Everest Capital USA
+## ARCHITECTURE
+Single `index.html` — embedded CSS, Three.js r128 CDN for 3D exploding house, vanilla JS for scroll animations, particle network BG, counters, split-screen preview. Zero build step.
 
-## Enhancement Priorities (for Claude Code sessions)
-1. **Kling 3.0 Video Integration**: Replace Three.js hero with exploding house video background + gradient mask. Add scroll-driven JPEG frame extraction for map pin drop animation between features and CTA.
-2. **Data Pipeline Animation**: Add a data-flow canvas animation showing glowing particles moving through the 12 pipeline stages.
-3. **Performance**: Compress everything, lazy-load split preview, target Lighthouse 90+.
-4. **Mobile**: Stack split-screen to vertical, collapse pipeline to vertical stepper, touch-friendly.
-5. **Chat Demo**: Add typing animation to chat messages, sequential reveal on scroll intersection.
+## KEY SECTIONS
+1. Hero: 3D exploding house wireframe + radial gradient overlay
+2. Stats Bar: Animated counters (10+ years, 1393 auctions, 12-stage, 64.4% ML)
+3. Split-Screen Demo: Chat left + Report right (mock UI)
+4. Features: Lien Discovery, ML Bids, One-Click Reports
+5. Pipeline: 12-stage visual flow
+6. CTA: Email capture
+7. Footer: BidDeed.AI + Everest Capital USA
 
-## Deployment
-- **Preview**: GitHub Pages — `breverdbidder.github.io/biddeed-landing/`
-- **Production**: Cloudflare Pages — `biddeed.ai` (DNS on Cloudflare)
-- **CI**: Push to `main` auto-deploys to GitHub Pages. CF Pages connects to same repo.
+## 3D ASSET INTEGRATION (when Kling 3.0 videos arrive)
 
-## Session Hygiene
-- MANDATORY plugins: Context7 + CC Status Line
-- Kill session at 50% context. NEVER /compact.
-- Cost discipline: $10/session MAX. ONE attempt per approach.
+### Hero Video Replace Wireframe
+1. Compress: `ffmpeg -i hero.mp4 -vcodec libx264 -crf 28 -preset slow -vf scale=1920:-2 -an hero_compressed.mp4` (target <500KB)
+2. Replace Three.js canvas with `<video autoplay muted loop playsinline>`
+3. Keep `.hero-overlay` radial gradient mask
 
-## Testing
-- Open in browser, verify exploding house renders, pipeline stages animate sequentially
-- Check split-screen preview renders both panes
-- Verify BID/REVIEW/SKIP color coding matches brand spec
-- Mobile viewport (375px width)
-- No console errors
-- Lighthouse: Performance ≥ 90, Accessibility ≥ 90
+### Scroll-Driven Frame Animation
+1. Extract: `ffmpeg -i scroll.mp4 -vf fps=24 -q:v 2 frames/frame_%04d.jpg`
+2. Map scroll position → frame index, preload first 10
+3. Insert between Split-Screen Demo and Features sections
 
-## DO NOT
-- Change brand colors or BID/REVIEW/SKIP color scheme
-- Add npm/build dependencies — single static HTML file
-- Use Inter, Roboto, or Arial fonts
-- Remove any auction data examples from the split-screen preview
-- Break the Three.js wireframe or pipeline animation
+## SESSION RULES
+- MANDATORY: Context7 + CC Status Line plugins
+- 50% context → kill session, never /compact
+- Commit+push after every change (Pages auto-deploys)
+- $10/session MAX
+
+## PRIORITY QUEUE
+1. [ ] Integrate Kling 3.0 hero video (exploding house)
+2. [ ] Add scroll-driven map pin-drop animation
+3. [ ] Connect email CTA to Supabase waitlist
+4. [ ] OG image + Twitter cards
+5. [ ] Lighthouse 95+
+6. [ ] Deploy to Cloudflare Pages (production)
