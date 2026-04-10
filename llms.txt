@@ -1,0 +1,40 @@
+# BidDeed.AI
+
+> AI-powered foreclosure auction intelligence by Everest Capital USA.
+
+BidDeed.AI is an agentic AI ecosystem — not SaaS — built for Florida foreclosure and tax deed investing. It automates the entire auction workflow from discovery through disposition using the Everest Ascent™ 12-stage pipeline.
+
+## What BidDeed.AI Does
+
+- Automated lien discovery across 5+ public record sources (AcclaimWeb, RealTDM, BCPAO, Tax Collector, Clerk of Court)
+- ML-powered bid recommendations: BID, REVIEW, or SKIP with confidence scores trained on 1,300+ historical auctions
+- One-click DOCX auction reports with BCPAO photos, lien summaries, and max bid calculations
+- Senior lien detection that catches HOA foreclosures where mortgages survive — the #1 trap for new investors
+- 12-stage fully autonomous pipeline: Discovery → Scraping → Enrichment → Lien Search → Valuation → ML Scoring → Report Generation → Delivery
+
+## Max Bid Formula
+
+Max Bid = (ARV × 70%) - Repairs - $10K buffer - MIN($25K, 15% × ARV)
+
+## Coverage
+
+Currently: Brevard County, Florida (327,882 parcels verified)
+Expanding: All 67 Florida counties via ZoneWise.AI zoning intelligence platform
+
+## Companion Platform
+
+ZoneWise.AI — Florida-wide zoning intelligence. Parcel-level zoning data, jurisdiction mapping, and land use analytics across all 67 Florida counties. Powers the location intelligence layer of BidDeed.AI.
+
+Website: https://zonewise.ai
+
+## Company
+
+Everest Capital USA
+Satellite Beach, Florida
+Founded by Ariel Shapira — 10+ years foreclosure investing, licensed FL broker and general contractor
+
+## Links
+
+- Website: https://biddeed.ai
+- ZoneWise.AI: https://zonewise.ai
+- GitHub: https://github.com/breverdbidder
